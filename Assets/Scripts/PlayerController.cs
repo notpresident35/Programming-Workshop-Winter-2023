@@ -3,9 +3,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float MoveSpeed;
+    public float MinX;
+    public float MaxX;
 
-
-    // Update is called once per frame
     void Update()
     {
         HandleMovement();
@@ -13,14 +13,18 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        Vector3 moveDir = Vector3.zero;
+
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && transform.position.x > MinX)
         {
-            transform.Translate(Vector3.left * MoveSpeed * Time.deltaTime);
+            moveDir = Vector3.left;
         }
 
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && transform.position.x < MaxX)
         {
-            transform.Translate(Vector3.right * MoveSpeed * Time.deltaTime);
+            moveDir = Vector3.right;
         }
+
+        transform.Translate (moveDir * MoveSpeed * Time.deltaTime);
     }
 }
