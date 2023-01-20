@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 891685205}
   - component: {fileID: 891685209}
   - component: {fileID: 891685208}
+  - component: {fileID: 891685210}
   m_Layer: 0
   m_Name: funnyepicgamerspaceshipgoodname
   m_TagString: Untagged
@@ -236,6 +237,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aba65b7ce2f76e4cbed7fbfdca97521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 0}
+  SpawnCooldownOverTime:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   MoveSpeed: 5
   MinX: -6
   MaxX: 6
@@ -311,7 +319,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 891685204}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -350,6 +358,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
+--- !u!114 &891685210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891685204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7e8a46b18e2a804493cc1305bf4d837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetY: 0
+  MoveSpeed: 0
+  MinX: 0
+  MaxX: 0
 --- !u!1 &1227582765
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,13 +2,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject BulletPrefab;
+    public AnimationCurve SpawnCooldownOverTime;
     public float MoveSpeed;
     public float MinX;
     public float MaxX;
 
+    private float spawnCooldown = 0;
+
     void Update()
     {
         HandleMovement();
+        
+
+        HandleShooting();
+
+
+        spawnCooldown -= Time.deltaTime;
     }
 
     void HandleMovement()
@@ -25,6 +35,19 @@ public class PlayerController : MonoBehaviour
             moveDir = Vector3.right;
         }
 
-        transform.Translate (moveDir * MoveSpeed * Time.deltaTime);
+        transform.Translate(moveDir * MoveSpeed * Time.deltaTime);
+    }
+
+    void HandleShooting()
+    {
+        Vector3 moveDir = Vector3.zero;
+        if ((Input.GetKey(KeyCode.W)))
+        {
+            Instantiate(BulletPrefab, Vector3.zero,
+                Quaternion.identity, null);
+            moveDir = Vector3.down;
+
+        }
+
     }
 }
